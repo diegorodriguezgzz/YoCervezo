@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* Aplicación general */
+html {
+  padding: 0;
+  margin: 0; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+/* Secciones y layout */
+.dictionary-card {
+  background-color: #EB8A1E; }
+
+/* Estilo de componentes */
+h1 {
+  /* Título */
+  font-size: 54pt;
+  text-align: center;
+  margin: 3vh;
+  font-style: italic; }
+
+@media screen and (min-width: 990px) {
+  .dictionary-entry {
+    width: 40vw;
+    padding: 50px 20px 50px; } }
+
+.etimologia {
+  color: #800041; }
+
+/*# sourceMappingURL=style.css.map */
