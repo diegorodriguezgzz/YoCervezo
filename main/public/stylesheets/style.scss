@@ -1,6 +1,20 @@
+/* Breakpoints */
 $break-tablet: 766px;
 $break-laptop: 990px;
 $break-large : 1260px;
+
+/* Beer card vars */
+$beer-content-width: 80%;
+
+/* Colors */
+$orange : #EB8A1E;
+$burgundy : #800041;
+$link: #00B7FF;
+
+a:-webkit-any-link { 
+  color: inherit;
+  text-decoration: inherit;
+}
 
 /* Aplicación general */
 html {
@@ -14,14 +28,40 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+nav {
+  margin: 0;
+  padding: 1vh;
+  background-color: $orange;
+}
+
+.nav-ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.nav-link {
+  margin: 0.5vh 1vw;
+  padding: 0.5vh 0.5vw;
+  display: inline-block;
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 18pt;
+  line-height: 0;
 }
 
 /* Secciones y layout */
 .dictionary-card {
-  background-color: #EB8A1E;
+  background-color: $orange;
 
+}
+
+.beer-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Estilo de componentes */
@@ -40,5 +80,44 @@ h1 { /* Título */
 }
 
 .etimologia {
-  color: #800041;
+  color: $burgundy;
+}
+
+.beer-card {
+  height: 80%;
+  width: 33%;
+  margin: 1% 0;
+  padding: 0 2%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  // overflow: scroll;
+}
+
+.beer-img {
+  height: 50%;
+  width: $beer-content-width;
+  margin: 2%;
+  border: 2px solid black;
+}
+
+.beer-link {
+  width: $beer-content-width;
+}
+
+.beer-content {
+  height: 46%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.beer-content * {
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
