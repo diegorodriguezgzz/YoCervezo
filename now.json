@@ -1,0 +1,9 @@
+{
+  "name" : "yo-cervezo",
+  "alias" : "yocervezo.com",
+  "env": {
+    "PORT": "3001",
+    "ENV": "development",
+    "MONGOPORT": "27010"
+  }
+}

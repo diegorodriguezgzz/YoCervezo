@@ -87,16 +87,22 @@ h1 {
   margin: 3vh;
   font-style: italic; }
 
-@media screen and (min-width: 990px) {
-  .dictionary-entry {
-    width: 40vw;
-    padding: 50px 20px 50px; } }
+.dictionary-entry {
+  color: white; }
+  @media screen and (min-width: 990px) {
+    .dictionary-entry {
+      width: 40vw;
+      padding: 50px 20px 50px; } }
 
 .etimologia {
   color: #800041; }
 
-.btn-index {
+.btn-container a {
   width: 80%;
+  cursor: inherit; }
+
+.btn-index {
+  width: 100%;
   margin: 1vh;
   padding: 1vh 0;
   text-align: center;
@@ -105,10 +111,11 @@ h1 {
   background-color: white;
   color: #EB8A1E;
   font-size: 16pt;
-  font-weight: bold; }
+  font-weight: bold;
+  cursor: pointer; }
 
 .btn-index--burgundy {
-  width: 80%;
+  width: 100%;
   margin: 1vh;
   padding: 1vh 0;
   text-align: center;
@@ -117,7 +124,8 @@ h1 {
   background-color: white;
   color: #800041;
   font-size: 16pt;
-  font-weight: bold; }
+  font-weight: bold;
+  cursor: pointer; }
 
 .conjugacion-message {
   width: 50vw;
