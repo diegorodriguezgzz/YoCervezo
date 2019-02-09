@@ -1,3 +1,6 @@
+<div class="seleccion-cervezas">
+
+</div>
 
 <form action="/onboard" id="onBoard">Contesta</form>
 
@@ -6,11 +9,17 @@
 
 <label for="passowrd">Passowrd</label>
 <input type="password" name="password" placeholder="Correo Electronico">
+{{!-- 
+<label for="bestBeer">¿Tu mejor cerveza?</label>
+<input type="text" name="bestBeer" placeholder="La tuya"> --}}
+<label for="bestBeer">¿Tu mejor cerveza?</label>
+<select name="bestBeer" form="bestBeer" >
+  {{#each consumedBeer}}
+    <option value="{{consumedBeer}}">{{consumedBeer}}</option>
+  {{/each}}
+</select>
 
-<label for="bestBeer">Tu mejor cerveza?</label>
-<input type="text" name="bestBeer" placeholder="La tuya">
-
-<label for="worstBeer">La peor cerveza que te has tomado?</label>
+<label for="worstBeer">¿La peor cerveza que te has tomado?</label>
 <input type="text" name="worstBeer" placeholder="Corona">
 
 <label for="celebBeer">¿Con qué cerveza te gusta celebrar?</label>
@@ -25,7 +34,7 @@
 <label for="beerGas">Del 1 al 10, ¿Qué tan gaseosa te gusta tu cerveza?</label>
 <input type="range" value = "10" name = "beerGas">
 
-<label for="beerAlc">¿Cómo te gusta el acohol den la cerveza?</label>
+<label for="beerAlc">¿Cómo te gusta el alcohol den la cerveza?</label>
 <select name = "beerAlc" form = "onBoard" >
   <option value="Muy presente">Muy presente</option>
   <option value="Balanceado">Balanceado</option>

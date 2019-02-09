@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const Beer = require('../models/Beer');
-const WorldBeers = require('../models/WorldBeers');
+const ConsumedBeer = require('../models/ConsumedBeers');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -18,6 +18,11 @@ router.get('/beers', (req, res, next) => {
     next();
   });
 });
+
+router.get('/onboarding', (req, res, next) =>{
+  return res.render('onboarding');
+});
+
 
 router.get('/beers/:id', (req, res, next) => {
   Beer.findById(req.params.id)
