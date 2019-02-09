@@ -110,6 +110,7 @@ h1 { /* Título */
 }
 
 .dictionary-entry {
+  color: white;
   @media screen and (min-width: $break-laptop) {
     width: 40vw;
     padding: 50px 20px 50px;
@@ -120,8 +121,13 @@ h1 { /* Título */
   color: $burgundy;
 }
 
-.btn-index {
+.btn-container a {
   width: 80%;
+  cursor: inherit;
+}
+
+.btn-index {
+  width: 100%;
   margin: 1vh;
   padding: 1vh 0;
   text-align: center;
@@ -131,10 +137,11 @@ h1 { /* Título */
   color: $orange;
   font-size: 16pt;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .btn-index--burgundy {
-  width: 80%;
+  width: 100%;
   margin: 1vh;
   padding: 1vh 0;
   text-align: center;
@@ -144,8 +151,8 @@ h1 { /* Título */
   color: $burgundy;
   font-size: 16pt;
   font-weight: bold;
+  cursor: pointer;
 }
-
 
 .conjugacion-message {
   width: 50vw;
