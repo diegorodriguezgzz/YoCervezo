@@ -13,8 +13,7 @@ const userSchema = new Schema({
     bestBeer: String, //Rel. a Beer Model? 
     worstBeer: String,  //Rel. a Beer Model? 
     celebBeer: String, //Cerveza que usas para celebrar
-    sadBeer: String, // Cerveza cuando estas triste/de malas
-    beerColour: String, //De que color prefieres tu cerveza? 
+    beerStyle: String, //De que color prefieres tu cerveza? 
     beerHead: String, //Cuán espumosa te gusta tu cerveza? 
     beerGas: String, //La cerveza te gusta con mucho/medio/poco/nada de gas
     beerAlc: String, //Te gustan las cervezas con Mucho/algo/poco/nada de alcohol
