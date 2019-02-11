@@ -13,14 +13,19 @@
 <label for="bestBeer">¿Tu mejor cerveza?</label>
 <input type="text" name="bestBeer" placeholder="La tuya"> --}}
 <label for="bestBeer">¿Tu mejor cerveza?</label>
-<select name="bestBeer" form="bestBeer" >
-  {{#each consumedBeer}}
-    <option value="{{consumedBeer}}">{{consumedBeer}}</option>
+<input name="bestBeer" list="beerList" placeholder="Carta Blanca">
+<datalist id="beerList">
+  {{#unless consumedBeers}}
+    <option value="Se acabó la cerveza :(">
+  {{/unless}}
+  {{#each consumedBeers}}
+    <option value="{{this.name}}">
   {{/each}}
-</select>
+</datalist>
 
+{{!-- Usa la misma lista que lo anterior --}}
 <label for="worstBeer">¿La peor cerveza que te has tomado?</label>
-<input type="text" name="worstBeer" placeholder="Corona">
+<input list="beerList" name="worstBeer" placeholder="Corona">
 
 <label for="celebBeer">¿Con qué cerveza te gusta celebrar?</label>
 <input type="string" name="celebBeer" placeholder="No lo Se">

@@ -1,9 +1,9 @@
+require('dotenv').config();
+
 const ConsumedBeers = require('../models/ConsumedBeers');
 const csv = require('fast-csv');
 const mongoose = require('mongoose');
-
-const dbName = 'yocervezo';
-mongoose.connect(`mongodb://localhost/${dbName}`);
+mongoose.connect(process.env.MONGODB);
 
 let seedsArr = [];
 csv.fromPath("./bin/primerasCervezas.csv", {headers: true})
