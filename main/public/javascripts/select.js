@@ -17,4 +17,5 @@ beerBtn.onclick = () => {
   xhr.send(JSON.stringify({
     "beers": beers
   }));
+  window.location.href = `/onboarding/${userid}`;
 }

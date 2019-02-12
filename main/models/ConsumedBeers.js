@@ -7,6 +7,8 @@ const consBeerSchema = new Schema({
   ibu : Number,
   style : String,
   brewery : String
+}, {
+  timestamps : true
 });
 
 const ConsumedBeers = mongoose.model('consumed-beers', consBeerSchema);
