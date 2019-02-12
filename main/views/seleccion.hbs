@@ -1,0 +1,11 @@
+<div class="seleccion-cervezas">
+  <form action="/seleccion/{{userid}}" method="post"></form>
+  <select id="consumed-beers" class="multiselect-cervezo" name="beers[]" multiple="multiple">
+    {{#each consumedBeers}}
+      <option value="{{this._id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <button id="btn-consumed-beers" type="submit">¡Listo!</button>
+</div>
+<script src="/javascripts/select.js"></script>
+

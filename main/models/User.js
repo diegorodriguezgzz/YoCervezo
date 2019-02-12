@@ -18,9 +18,9 @@ const userSchema = new Schema({
     beerGas: String, //La cerveza te gusta con mucho/medio/poco/nada de gas
     beerAlc: String, //Te gustan las cervezas con Mucho/algo/poco/nada de alcohol
     beerBitt: String, //Te gustan las cervezas muy amargas/ medio amargas / nada amargas /
-    beerArray: [String], //Rel. con el beer database Array con las cervezas que has probado
+    consumedBeer: [String], //Rel. con el beer database Array con las cervezas que has probado
     beerLikeArray: [String], //Rel. con el beer database Array con las 3 cervezas que más te han gustado
-    beerDislikeArraY: [String], //Rel. con el beer database Array con las 3 cervezas que menos te gustan
+    beerDislikeArray: [String], //Rel. con el beer database Array con las 3 cervezas que menos te gustan
     beerInterest: [String], //Bebedor de sofá, Entusiasta, Entrepreneur 
     belt: Number //Nivel del cervezador dentro del 
 });
