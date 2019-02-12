@@ -1,52 +1,49 @@
-<div class="seleccion-cervezas">
+<form method="POST" action="/onboarding/{{userid}}" id="onBoard">Contesta
 
-</div>
-
-<form action="/onboard" id="onBoard">Contesta</form>
-
-<p><label for="bestBeer">Tu mejor cerveza?</label>
-<input type="text" name="bestBeer" placeholder="La tuya"></p>
-
-<label for="passowrd">Passowrd</label>
-<input type="password" name="password" placeholder="Correo Electronico">
-{{!-- 
-<label for="bestBeer">¿Tu mejor cerveza?</label>
-<input type="text" name="bestBeer" placeholder="La tuya"> --}}
-<label for="bestBeer">¿Tu mejor cerveza?</label>
-<input name="bestBeer" list="beerList" placeholder="Carta Blanca">
-<datalist id="beerList">
-  {{#unless consumedBeers}}
+  {{!--
+  <label for="bestBeer">¿Tu mejor cerveza?</label>
+  <input type="text" name="bestBeer" placeholder="La tuya"> --}}
+  <label for="bestBeer">¿Tus tres mejores cervezas?</label>
+  <input name="bestBeer" list="beerList" placeholder="Carta Blanca">
+  <datalist id="beerList">
+    {{#unless consumedBeers}}
     <option value="Se acabó la cerveza :(">
-  {{/unless}}
-  {{#each consumedBeers}}
+      {{/unless}}
+      {{#each consumedBeers}}
     <option value="{{this.name}}">
-  {{/each}}
-</datalist>
+      {{/each}}
+  </datalist>
 
-{{!-- Usa la misma lista que lo anterior --}}
-<label for="worstBeer">¿La peor cerveza que te has tomado?</label>
-<input list="beerList" name="worstBeer" placeholder="Corona">
+  {{!-- Usa la misma lista que lo anterior --}}
+  <label for="worstBeer">¿Las tres peores cervezas que te has tomado?</label>
+  <input list="beerList" name="worstBeer" placeholder="Corona">
 
-<label for="celebBeer">¿Con qué cerveza te gusta celebrar?</label>
-<input type="string" name="celebBeer" placeholder="No lo Se">
+  <label for="celebBeer">¿Con qué cerveza te gusta celebrar?</label>
+  <input list="beerList" name="celebBeer" placeholder="No lo Se">
 
-<label for="beerStyle">¿Qué estilo de cerveza es tu favorito?</label>
-<input type="text" name = "beerStyle" placeholder="Pale Ale, Lager, Stout?"> 
+  <label for="beerStyle">¿Qué estilo de cerveza es tu favorito?</label>
+  <input type="text" name="beerStyle" placeholder="¿Pale Ale, Lager, Stout?">
 
-<label for="beerHead">Del 1 al 10, ¿Cuán espumosa te gusta tu cerveza?</label>
-<input type="range" value="10" name="beerHead"></p>
+  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
+  <label for="beerHead">Del 1 al 10, ¿Cuán espumosa te gusta tu cerveza?</label>
+  <input type="range" value="10" name="beerHead"></p>
 
-<p><label for="beerGas">Del 1 al 10, ¿Qué tan gaseosa te gusta tu cerveza?</label>
-<input type="range" value = "10" name = "beerGas"></p>
+  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
+  <p><label for="beerGas">Del 1 al 10, ¿Qué tan gaseosa te gusta tu cerveza?</label>
+    <input type="range" value="10" name="beerGas"></p>
 
-<label for="beerAlc">¿Cómo te gusta el alcohol den la cerveza?</label>
+  <label for="beerAlc">¿Cómo te gusta el alcohol den la cerveza?</label>
 
-<select name = "beerAlc" form = "onBoard" >
-  <option value="Muy presente">Muy presente</option>
-  <option value="Balanceado">Balanceado</option>
-  <option value="Ligero">Ligero</option>
-  <option value="Imperceptible">Imperceptible</option>
-</select></p>
+  <select name="beerAlc" form="onBoard">
+    <option value="Muy presente">Muy presente</option>
+    <option value="Balanceado">Balanceado</option>
+    <option value="Ligero">Ligero</option>
+    <option value="Imperceptible">Imperceptible</option>
+  </select></p>
 
-<p><label for="beerBitt">¿Qué tan amarga te gusta?</label>
-<input type="range" value = 10 name = "beerBitt"></p>
+  <p><label for="beerBitt">¿Qué tan amarga te gusta?</label>
+    <input type="range" value=10 name="beerBitt"></p>
+
+  <input type="submit" value="Enviar">
+
+</form>

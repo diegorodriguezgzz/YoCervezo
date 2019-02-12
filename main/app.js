@@ -8,7 +8,12 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-
+const passport     = require('passport');
+const LocalStrategy =  require('passport-local').Strategy;
+const session      = require('express-session');
+const bcrypt       = require('bcrypt');
+const flash        = require('connect-flash');
+const User         = require('./models/User');
 
 mongoose
   .connect(process.env.MONGODB, {useNewUrlParser: true})
@@ -29,6 +34,43 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: process.env.SESSIONSECRET,
+  resave: true,
+  saveUninitialized: true
+}))
+
+passport.serializeUser((user, callback)=>{
+  callback(null, user._id)
+})
+
+passport.deserializeUser((id, callback)=>{
+  User.findById(id, (err, user)=>{
+    if(err) {return callback(err)}
+    callback(null, user)
+  })
+})
+
+passport.use(new LocalStrategy((username, password, next)=>{
+  User.findOne({username}, (err, user)=>{
+    if(err)
+      return next(err)
+
+    if(!user){
+      return next(null, false, {message: "Usuario incorrecto"})
+    }
+
+    if(!bcrypt.compareSync(password, user.password)){
+      return next(null, false, {message: "Contraseña incorrecta"})
+    }
+
+    return next(null, user)
+  })
+}))
+
+app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Express View engine setup
 
@@ -52,9 +94,10 @@ hbs.registerPartials(__dirname + '/views/partials')
 app.locals.title = 'YoCervezo';
 
 
-
+const passportRouter = require('./routes/passportRoutes');
 const index = require('./routes/index');
 app.use('/', index);
+app.use('/', passportRouter);
 
 
 module.exports = app;
