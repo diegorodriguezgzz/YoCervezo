@@ -1,8 +1,28 @@
-<h1>{{title}}</h1>
+<!--- <h1>{{title}}</h1> ¿de donde sale title? --->
+
+<!---Trabajo de mañana: 
+1) Cambiar el fondo del jumbortón por cebaditas. 
+2) Cambiar la fuente: Montserrat? 
+4) Ver por qué fuck no está cargando el Logo. (ni el alt text?) ¿.png maybe?
+5) Ver como diantres se ajusta el color y la transparencia en bootstrap; color code #EB8B1E
+ --->
+<img src="/img/yocervezo.png" id = "logoYc" height="50" width="150"></img>
 
 <section class="dictionary-card">
-  <div class="dictionary-entry">
-    <h2>
+  <div class="jumbotron">
+ <h1 class="display-4">La mejor cerveza, tu cerveza!</h1>
+  <p class="lead">Celebremos la diversidad cervecera, creémos nuevas cervezas, y fermentemos nuestras personalidades.</p>
+  <hr class="my-4">
+  <p>Mándanos tu receta</p>
+  <p>La fabricamos</p>
+  <p>¡Recíbela y disfruta!</p>
+  <p class="lead">
+      <a href="/login"><button class="btn-index">Ya cervezo</button></a>
+      <a href="/signup"><button class="btn-index">Aún no cervezo</button></a>
+      <a href="/about"><button class="btn-index--burgundy">Quiénes somos</button></a>
+  </p>
+
+   <!--- <h2>
       <em>Cervezar. v.</em> <br>
       <span class="etimologia">(Del sust. cerveza, a su vez del celtolat. cerevisĭa).</span> <br>
       <ol class="definiciones">
@@ -12,7 +32,7 @@
         <li>Celebrar la diversidad cervecera.</li>
       </ol>
     </h2>
-  </div>
+  </div>--->
   {{!--
   Placeholder for cool beer image
   This image should only be displayed in horizontal tablet or larger
@@ -20,10 +40,10 @@
 </section>
 <section class="segmentacion">
   <div class="btn-container">
-    <a href="/login"><button class="btn-index">Ya cervezo</button></a>
+    
     {{!-- <button>Cervezo y emprendo</button> --}}
-    <a href="/signup"><button class="btn-index">Aún no cervezo</button></a>
-    <a href="/about"><button class="btn-index--burgundy">Quiénes somos</button></a>
+    
+  
   </div>
 </section>
 <section class="conjugacion">
