@@ -1,3 +1,5 @@
+require('dotenv').config
+
 const Beer = require('../models/Beer');
 const mongoose = require('mongoose');
 
@@ -17,7 +19,7 @@ const mongoose = require('mongoose');
 // });
 
 mongoose
-  .connect('mongodb://localhost/yocervezo', {useNewUrlParser: true})
+  .connect(process.env.MONGODB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -188,11 +190,6 @@ const seedBeers = [{
 Beer.create(seedBeers)
   .then(beers => console.log(beers.map(beer => beer.brand)))
   .catch(err => console.log("An error occurred: ", err));
-
-
-
-
-
 
 // La ruda 
 // La ojete 
