@@ -1,12 +1,22 @@
 <div class="seleccion-cervezas">
+
   <h1>Por favor, selecciona las cervezas que has tomado que encuentres en esta lista.</h1>
   <form action="/seleccion/{{userid}}" method="post"></form>
   <select id="consumed-beers" class="multiselect-cervezo" name="beers[]" multiple="multiple">
+
     {{#each consumedBeers}}
       <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
   </select>
   <button id="btn-consumed-beers" type="submit">¡Listo!</button>
+  </form>
 </div>
 <script src="/javascripts/select.js"></script>
 
+{{!-- TODO: Cambiar esto para que
+en lugar de ser sólo un espacio de
+input de cervezas, te permita agregar nuevas cervezas
+y quizás valdría la pena mejorar UX eliminando el
+clear de la esquina, pero habilitando un clear
+automático con un botón externo.
+Checar documentación de Select2 --}}

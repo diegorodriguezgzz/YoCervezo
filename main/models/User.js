@@ -10,8 +10,6 @@ const userSchema = new Schema({
     number: Number,
     email: String,
     zipCode: Number,
-    bestBeer: String, //Rel. a Beer Model? 
-    worstBeer: String,  //Rel. a Beer Model? 
     celebBeer: String, //Cerveza que usas para celebrar
     beerStyle: String, //De que color prefieres tu cerveza? 
     beerHead: String, //Cuán espumosa te gusta tu cerveza? 

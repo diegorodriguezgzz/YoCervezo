@@ -3,6 +3,7 @@ const router = express.Router();
 const Beer = require('../models/Beer');
 const ConsumedBeers = require('../models/ConsumedBeers');
 const User = require('../models/User');
+const suggestBeerIBU = require('../inteligencia/seleccion')//TODO: Test, remove
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -43,8 +44,7 @@ router.get('/seleccion/:userid', (req, res, next) => {
 });
 
 router.post('/seleccion/:userid', (req, res, next) => {
-  const { beers } = JSON.parse(Object.keys(req.body)[0]); //TODO: This is too messy see if refactor
-
+  const { beers } = req.body;
   User.findOneAndUpdate({ _id: req.params.userid },
     {
       $set: { consumedBeer: beers }
@@ -61,42 +61,41 @@ router.post('/seleccion/:userid', (req, res, next) => {
 
 router.get('/onboarding/:userid', (req, res, next) => {
   User.findById(req.params.userid)
-  .populate('consumedBeer')
-  .then(user => {
-    const consumedBeers = user.consumedBeer;
-    return res.render('onboarding', {userid : user._id, consumedBeers});
-  })
-  .catch(err => {
-    console.log(err);
-    next();
-  })
+    .populate('consumedBeer')
+    .then(user => {
+      const consumedBeers = user.consumedBeer;
+      return res.render('onboarding', { userid: user._id, consumedBeers });
+    })
+    .catch(err => {
+      console.log(err);
+      next();
+    })
 });
 
 router.post('/onboarding/:userid', (req, res, next) => {
-  //TODO: Enforce consistency with arrays
   const {
-    bestBeer, 
-    worstBeer,
     celebBeer,
     beerStyle,
     beerHead,
     beerGas,
     beerAlc,
-    beerBitt
+    beerBitt,
+    beerLikeArray,
+    beerDislikeArray
   } = req.body
 
   User.findOneAndUpdate({ _id: req.params.userid },
     {
-      $set: { 
-      bestBeer,
-      worstBeer,    
-      celebBeer,
-      beerStyle,
-      beerHead,
-      beerGas,
-      beerAlc,
-      beerBitt
-     }
+      $set: {
+        celebBeer,
+        beerStyle,
+        beerHead,
+        beerGas,
+        beerAlc,
+        beerBitt,
+        beerLikeArray,
+        beerDislikeArray
+      }
     })
     .then(user => {
       console.log(`Onboarding complete for ${user.username}!`);
@@ -119,6 +118,19 @@ router.get('/beers/:id', (req, res, next) => {
       next();
     });
 });
+
+//Test TODO: Remove
+router.get('/testSuggest', (req, res, next) => {
+  let user = User.findById('5c6257c7e817c12426eb66dc')
+    .then(user => {
+      console.log(`IBU Suggestions for ${user.username}:
+  ${suggestBeerIBU(user._id)}`);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+})
 
 //router.post('/newUser', (req,res)=>{
 //  const{username, password, country, province, street, number, email, zipCode, bestBeer, worstBeer, celebBeer, beerStyle, beerHead, beerGas, beerAlc, beerBitt}
