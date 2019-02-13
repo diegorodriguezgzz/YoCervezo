@@ -1,4 +1,5 @@
 <div class="seleccion-cervezas">
+  <h1>Por favor, selecciona las cervezas que has tomado que encuentres en esta lista.</h1>
   <form action="/seleccion/{{userid}}" method="post"></form>
   <select id="consumed-beers" class="multiselect-cervezo" name="beers[]" multiple="multiple">
     {{#each consumedBeers}}
