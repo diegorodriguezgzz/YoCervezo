@@ -39,8 +39,7 @@ router.get('/seleccion/:userid', (req, res, next) => {
 });
 
 router.post('/seleccion/:userid', (req, res, next) => {
-  const { beers } = JSON.parse(Object.keys(req.body)[0]); //TODO: This is too messy see if refactor
-
+  const {beers} = req.body;
   User.findOneAndUpdate({ _id: req.params.userid },
     {
       $set: { consumedBeer: beers }
@@ -69,29 +68,28 @@ router.get('/onboarding/:userid', (req, res, next) => {
 });
 
 router.post('/onboarding/:userid', (req, res, next) => {
-  //TODO: Enforce consistency with arrays
   const {
-    bestBeer, 
-    worstBeer,
     celebBeer,
     beerStyle,
     beerHead,
     beerGas,
     beerAlc,
-    beerBitt
+    beerBitt,
+    beerLikeArray,
+    beerDislikeArray
   } = req.body
 
   User.findOneAndUpdate({ _id: req.params.userid },
     {
       $set: { 
-      bestBeer,
-      worstBeer,    
-      celebBeer,
-      beerStyle,
-      beerHead,
-      beerGas,
-      beerAlc,
-      beerBitt
+        celebBeer,
+        beerStyle,
+        beerHead,
+        beerGas,
+        beerAlc,
+        beerBitt,
+        beerLikeArray,
+        beerDislikeArray    
      }
     })
     .then(user => {

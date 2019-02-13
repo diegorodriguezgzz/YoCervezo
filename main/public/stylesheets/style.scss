@@ -223,3 +223,23 @@ h1 { /* Título */
   width: 100%;
   text-align: center;
 }
+
+/* Sliders */
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 0;
+  background: url('../images/beer.svg');
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border: 0;
+  background: url('../images/beer.svg');
+  cursor: pointer;
+}
