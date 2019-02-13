@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
 
+    beerName:String,
+    beerDesc:String, 
+    beerWish:String,
     malt2: String,
     malt1: String,
     malt3: String,
