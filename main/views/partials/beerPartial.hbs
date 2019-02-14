@@ -2,9 +2,9 @@
   <img class="beer-img" src={{this.image_src}}>
   <a class="beer-link" href="/beers/{{this._id}}">
     <div class="beer-content">
-      <h2 class="beer-brand">{{this.brand}}</h2>
-      <h3 class="beer-style">{{this.style}}</h3>
-      {{!-- Change this to include currency later --}}
+      <h3 class="beer-brand">{{this.brand}}</h3>
+      <h4 class="beer-name">{{this.name}}</h4>
+      <p class="beer-style">{{this.style}}</p>
       <p class="beer-price">${{this.price}} MXN</p>
     </div>
   </a>

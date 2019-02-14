@@ -1,11 +1,12 @@
 require('dotenv').config();
+const csv = require('fast-csv')
 
 const ConsumedBeers = require('../models/ConsumedBeers');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB);
 
 let seedsArr = [];
-csv.fromPath("./bin/primerasCervezas.csv", {headers: true})
+csv.fromPath("./bin/tercerasCervezas.csv", {headers: true})
 .on("data", data => {
   seedsArr.push(data);
 })
@@ -17,17 +18,6 @@ csv.fromPath("./bin/primerasCervezas.csv", {headers: true})
     return el;
   });
 
-  // seedsArr = seedsArr.filter(el => {
-  //   return el.brewery_id !== 0;
-  // });
-//  seedsArr = seedsArr.filter(el => {
-//    return (!isNaN(el.brewery_id) &&
-//            !isNaN(el.ibu) &&
-//            !isNaN(el.cat_id) &&
-//            el.style_id !== 'NaN' &&
-//            el.srm !== 'NaN');
-//  })
-  //Se generan los registros en la BD
   ConsumedBeers.create(seedsArr, (err) => {
     if (err) {throw(err)}
     console.log(`Generó ${seedsArr.length} cervezas`);
