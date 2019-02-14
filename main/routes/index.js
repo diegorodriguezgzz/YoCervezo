@@ -14,6 +14,10 @@ router.get('/onboarding', (req, res, next) => {
   return res.render('onboarding')
 });
 
+router.get('/addrecipe', (req, res, next) => {
+  return res.render('addrecipe')
+});
+
 router.get('/beers', (req, res, next) => {
   Beer.find()
     .then(beers => {

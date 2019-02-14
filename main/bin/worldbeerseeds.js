@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const ConsumedBeers = require('../models/ConsumedBeers');
-const csv = require('fast-csv');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB);
 

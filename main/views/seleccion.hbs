@@ -1,6 +1,9 @@
 <div class="seleccion-cervezas">
-  <form action="/seleccion/{{userid}}" method="post">
-  <select id="consumed-beers" class="multiselect-cervezo" name="beers" multiple="multiple">
+
+  <h1>Por favor, selecciona las cervezas que has tomado que encuentres en esta lista.</h1>
+  <form action="/seleccion/{{userid}}" method="post"></form>
+  <select id="consumed-beers" class="multiselect-cervezo" name="beers[]" multiple="multiple">
+
     {{#each consumedBeers}}
       <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
@@ -9,6 +12,7 @@
   </form>
 </div>
 <script src="/javascripts/select.js"></script>
+
 {{!-- TODO: Cambiar esto para que
 en lugar de ser sólo un espacio de
 input de cervezas, te permita agregar nuevas cervezas

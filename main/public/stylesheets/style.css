@@ -14,14 +14,15 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: 'Montserrat', sans-serif; }
 
 nav {
   margin: 0;
   padding: 1vh;
   background-color: #EB8A1E;
   position: sticky;
-  top: 0; }
+  top: 0;
+  font-family: 'Montserrat', sans-serif; }
 
 .nav-ul {
   display: flex;
@@ -35,8 +36,9 @@ nav {
   display: inline-block;
   color: white !important;
   text-decoration: none !important;
-  font-size: 18pt;
-  line-height: 0; }
+  font-size: 14pt;
+  line-height: 0;
+  font-family: 'Montserrat', sans-serif; }
 
 /* Secciones y layout */
 .dictionary-card {
@@ -77,7 +79,8 @@ footer {
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-family: 'Montserrat', sans-serif; }
 
 /* Estilo de componentes */
 h1 {
@@ -85,7 +88,8 @@ h1 {
   font-size: 54pt;
   text-align: center;
   margin: 3vh;
-  font-style: italic; }
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif; }
 
 .dictionary-entry {
   color: white; }
@@ -107,12 +111,13 @@ h1 {
   padding: 1vh 0;
   text-align: center;
   border: 3px solid #EB8A1E;
-  border-radius: 3px;
+  border-radius: 25px;
   background-color: white;
   color: #EB8A1E;
   font-size: 16pt;
-  font-weight: bold;
-  cursor: pointer; }
+  font-weight: normal;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif; }
 
 .btn-index--burgundy {
   width: 100%;
@@ -124,7 +129,6 @@ h1 {
   background-color: white;
   color: #800041;
   font-size: 16pt;
-  font-weight: bold;
   cursor: pointer; }
 
 .conjugacion-message {
@@ -150,7 +154,8 @@ h1 {
   font-size: 16pt;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-family: 'Montserrat', sans-serif; }
 
 /* Páginas cervezas */
 .beer-card {
@@ -186,21 +191,22 @@ h1 {
   width: 100%;
   text-align: center; }
 
-/* Sliders */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border: 0;
-  background: url("../images/beer.svg");
-  cursor: pointer; }
+#logoYc {
+  background: #EB8A1E; }
 
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border: 0;
-  background: url("../images/beer.svg");
-  cursor: pointer; }
+.card-img-top {
+  width: 100%;
+  height: 40vh;
+  object-fit: scale-down; }
+
+p {
+  font-family: 'Montserrat', sans-serif; }
+
+.logoDiv {
+  background-color: #EB8A1E; }
+
+#logoNav {
+  width: 40%vh;
+  height: 45px; }
 
 /*# sourceMappingURL=style.css.map */
