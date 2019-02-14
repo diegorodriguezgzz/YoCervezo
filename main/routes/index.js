@@ -3,6 +3,7 @@ const router = express.Router();
 const Beer = require('../models/Beer');
 const ConsumedBeers = require('../models/ConsumedBeers');
 const User = require('../models/User');
+const Hops = require('../models/Hops');
 const suggestBeerIBU = require('../inteligencia/seleccion')//TODO: Test, remove
 
 /* GET home page */
@@ -14,8 +15,19 @@ router.get('/onboarding', (req, res, next) => {
   return res.render('onboarding')
 });
 
-router.get('/addrecipe', (req, res, next) => {
-  return res.render('addrecipe')
+//router.get('/addrecipe', (req, res, next) => {
+  //return res.render('addrecipe')
+//});
+
+router.get('/addrecipe', (req,res,next)=>{
+  Hops.find()
+  .then(hops =>{
+    return res.render ('addrecipe',{hops});
+  })
+  .catch(err => {
+    console.log(err);
+    next();
+  });
 });
 
 router.get('/beers', (req, res, next) => {
