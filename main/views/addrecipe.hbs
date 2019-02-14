@@ -154,3 +154,12 @@
   <button type="submit" class="btn-index">Listo!</button>
 </form>
 
+
+<div class="form-group">
+    
+  <label for="exampleFormControlSelect1">Selecciona el primer lúpulo</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      {{#each hops}}
+      <option>{{this.hopName}}</option>
+      {{/each}}
+    </select>
