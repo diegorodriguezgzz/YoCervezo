@@ -6,13 +6,14 @@ const beerSchema = new Schema({
   stock: Number,
   price: Number,
   style: String,
+  name: String,
   brand: String,
   image_src: String,
   country: String, //Nacionalidad
   description : String,
   ibu: Number,
-  alc: Number,
-  color: Number, //Hay que ver si se representa src como número o solo como string "claro, oscuro, blonde"
+  abv: Number,
+  color: String, //Hay que ver si se representa src como número o solo como string "claro, oscuro, blonde"
   tags : [String] //Es un array de strings: Citrusy, Malty, Chocolate, Bitter, etc. 
 });
 

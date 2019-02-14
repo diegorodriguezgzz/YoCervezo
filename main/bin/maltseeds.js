@@ -54,3 +54,5 @@ Malt.create(malts, (err) => {
   console.log(`Created ${malts.length} malts`)
   mongoose.connection.close()
 });
+
+//Podemos web-scrapear la lista completa de micerveza.mx?
