@@ -8,4 +8,9 @@ $(document).ready(function () {
     placeholder: "Escribe tus cervezas aquí...",
     maximumSelectionLength: 3
   });
+
+  $(".multiselect-recetas").select2({
+    placeholder: "Escribe tus ingredientes aquí...",
+    maximumSelectionLength: 6
+  });
 });

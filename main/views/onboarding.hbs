@@ -1,5 +1,7 @@
-<form method="POST" action="/onboarding/{{userid}}" id="onBoard">Contesta
+<h1>¡Ayúdanos a conocerte!</h1>
+<small class="form-text text-muted">Con ésta información, podremos conocer mejor tus gustos: </small>
 
+<form method="POST" action="/onboarding/{{userid}}" id="onBoard">
   <label for="beerLikeArray">¿Las tres cervezas que más te gustan?</label>
   <select class="multiselect-cervezo-limit3" name="beerLikeArray" multiple="multiple">
     {{#each consumedBeers}}
