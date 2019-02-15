@@ -17,58 +17,23 @@
       <input type="text" class="form-control" name="beerWish" placeholder="Con sabor a madera y café, poca espuma y mucho alcohol">
   </div>
 
-
 <div id = "malt-select" class="form-group">
+<hr>
 <h3>Ahora, a algo más técnico, tus maltas:</h3>
 <small class="form-text text-muted">Selecciona las maltas que quieres y agrega la cantidad en gramos que vamos a poner. Considera que cada lote se prepara en 22 L de agua:</small>
- form de maltb
- <label for="malt1">Selecciona tu malta base:</label>
+ <label for="maltB">Selecciona tu malta base:</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="maltB">
+      {{#each malts}}
+      <option>{{this.name}}</option>
+      {{/each}}
+    </select>
 
- form de maltsE
-    <select class="multiselect-recetas" id="exampleFormControlSelect1" multiple="multiple" name="maltsE">
+ <label for="maltsE">Selecciona tus maltas de especialidad</label>
+    <select class="multiselect-recetas" id="Multiselect" multiple="multiple" name="maltsE">
       {{#each malts}}
       <option value="{{this._id}}">{{this.name}}</option>
       {{/each}}
     </select>
-
- <label for="maltB">Selecciona tu malta base:</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="maltB">
-      {{#each malts}}
-      <option>{{this.name}}</option>
-      {{/each}}
-    </select>
-
-
- <label for="maltB">Selecciona tu malta base:</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="maltB">
-      {{#each malts}}
-      <option>{{this.name}}</option>
-      {{/each}}
-    </select>
-
- <label for="malt1">Selecciona tu primera malta de especialidad:</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="malt1">
-      {{#each malts}}
-      <option>{{this.name}}</option>
-      {{/each}}
-    </select>
- 
-     <label for="malt2">Selecciona tu segunda malta de especialidad:</label>
-    <select class="form-control" id="exampleFormControlSelect1" name ="malt2">
-      {{#each malts}}
-      <option>{{this.name}}</option>
-      {{/each}}
-    </select>
-
-
-   <label for="malt2">Selecciona tu tercera malta de especialidad:</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="malt3">
-      {{#each malts}}
-      <option>{{this.name}}</option>
-      {{/each}}
-    </select>
-
-
 </div>
 
 

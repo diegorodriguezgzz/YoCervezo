@@ -1,0 +1,9 @@
+---
+  applications:
+  - instances: 1
+    name: yocevezo
+    memory: 128M
+    domain: mybluemix.net
+    host: yocervezo
+    path: . 
+    command: npm start

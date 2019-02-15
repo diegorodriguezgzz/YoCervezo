@@ -43,7 +43,7 @@ router.post('/addrecipe/:userid', (req,res)=> {
     maltb,
     maltsE,
     hops
-  } = req.body
+  } = req.bodyg
   const userid = req.params.userid;
   User.findById(userid)
   .then(user => {
