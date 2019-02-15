@@ -4,8 +4,7 @@ const Beer = require('../models/Beer');
 const ConsumedBeers = require('../models/ConsumedBeers');
 const User = require('../models/User');
 const Hops = require('../models/Hops');
-const suggestBeerIBU = require('../inteligencia/seleccion')//TODO: Test, remove
-const Malt = require('../models/Malt');
+const intel = require('../inteligencia/seleccion')//TODO: Test, remove
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -162,15 +161,14 @@ router.get('/beers/:id', (req, res, next) => {
 
 //Test TODO: Remove
 router.get('/testSuggest', (req, res, next) => {
-  let user = User.findById('5c6257c7e817c12426eb66dc')
+  let user = User.findById('5c650db725329c1c2095be00')
     .then(user => {
-      console.log(`IBU Suggestions for ${user.username}:
-  ${suggestBeerIBU(user._id)}`);
+      console.log(`ABV Suggestions for ${user.username}:
+  ${intel.suggestBeerABV(user._id)}`);
     })
     .catch(err => {
       console.log(err);
     })
-
 })
 
 //router.post('/newUser', (req,res)=>{
