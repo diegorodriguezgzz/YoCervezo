@@ -5,6 +5,7 @@ const ConsumedBeers = require('../models/ConsumedBeers');
 const User = require('../models/User');
 const Hops = require('../models/Hops');
 const suggestBeerIBU = require('../inteligencia/seleccion')//TODO: Test, remove
+const Malt = require('../models/Malt');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -19,16 +20,44 @@ router.get('/onboarding', (req, res, next) => {
   //return res.render('addrecipe')
 //});
 
-router.get('/addrecipe', (req,res,next)=>{
-  Hops.find()
-  .then(hops =>{
-    return res.render ('addrecipe',{hops});
+router.get('/addrecipe/:userid', (req,res)=>{
+  const userid = req.params.userid;
+    Hops.find()
+    .then(hops =>{ 
+      Malt.find()
+      .then(malts =>{
+        console.log('hops', hops);
+        return res.render ('addrecipe',{malts, hops, userid : userid});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+router.post('/addrecipe/:userid', (req,res)=> {
+  const {
+    maltb,
+    maltsE,
+    hops
+  } = req.body
+  const userid = req.params.userid;
+  User.findById(userid)
+  .then(user => {
+    //Get list of recipes
+    //List of beers is an array
+    //Append new recipe to end of array
+    //Set list of recipes to be appended list
   })
   .catch(err => {
     console.log(err);
-    next();
-  });
-});
+  })
+})
+  
+  
 
 router.get('/beers', (req, res, next) => {
   Beer.find()
