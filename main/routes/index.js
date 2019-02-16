@@ -24,18 +24,6 @@ router.get('/showrecipe', (req, res, next)=>
 //return res.render('addrecipe')
 //});
 
-<<<<<<< HEAD
-router.get('/addrecipe', (req, res, next) => {
-  Hops.find()
-    .then(hops => {
-      return res.render('addrecipe', { hops });
-    })
-    .catch(err => {
-      console.log(err);
-      next();
-    });
-});
-=======
 router.get('/addrecipe/:userid', (req,res)=>{
   const userid = req.params.userid;
     Hops.find()
@@ -74,7 +62,6 @@ router.post('/addrecipe/:userid', (req,res)=> {
 })
   
   
->>>>>>> e5602ffde5464062c3b48a0b449e2784a9296e41
 
 router.get('/beers', (req, res, next) => {
   Beer.find()
