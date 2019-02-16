@@ -4,6 +4,6 @@
     name: yocevezo
     memory: 128M
     domain: mybluemix.net
-    host: yocervezo
+    host: yocervezo-mx
     path: . 
     command: npm start
