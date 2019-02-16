@@ -11,9 +11,14 @@ router.get('/', (req, res, next) => {
   return res.render('index');
 });
 
-router.get('/onboarding', (req, res, next) => {
-  return res.render('onboarding')
+
+router.get('/showrecipe', (req, res, next)=>
+{
+  return res.render('showrecipe');
 });
+//router.get('/onboarding', (req, res, next) => {
+  //return res.render('onboarding')
+//});
 
 //router.get('/addrecipe', (req, res, next) => {
   //return res.render('addrecipe')
@@ -103,14 +108,17 @@ router.get('/onboarding/:userid', (req, res, next) => {
   User.findById(req.params.userid)
     .populate('consumedBeer')
     .then(user => {
+      console.log(user);
       const consumedBeers = user.consumedBeer;
-      return res.render('onboarding', { userid: user._id, consumedBeers });
+      return res.render('onboarding', { userid: user._id, consumedBeers, user:user });
     })
     .catch(err => {
       console.log(err);
       next();
     })
 });
+
+
 
 router.post('/onboarding/:userid', (req, res, next) => {
   const {

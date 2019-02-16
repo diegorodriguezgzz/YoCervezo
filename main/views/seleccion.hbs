@@ -1,17 +1,42 @@
 <div class="seleccion-cervezas">
 
   <h1>Por favor, selecciona las cervezas que has tomado que encuentres en esta lista.</h1>
-  <form action="/seleccion/{{userid}}" method="post">
-  <select id="consumed-beers" class="multiselect-cervezo" name="beers" multiple="multiple">
 
-    {{#each consumedBeers}}
-      <option value="{{this._id}}">{{this.name}} - {{this.brewery}}</option>
-    {{/each}}
-  </select>
-  <button id="btn-consumed-beers" type="submit">¡Listo!</button>
-  </form>
+<div>
+  <div class = "choice-container">
+     <p>
+  Estas cervezas ya han sido
+  analizadas, y al seleccionar las que has
+  probado podemos conocer que sabores y
+  estilos has experimentado
+  </p>
+     <div>
+           <form action="/seleccion/{{userid}}" method="post">
+           <select id="consumed-beers" class="multiselect-cervezo" name="beers" multiple="multiple">
+
+            {{#each consumedBeers}}
+            <option value="{{this._id}}">{{this.name}} - {{this.brewery}}</option>
+            {{/each}}
+            </select>
+            <form>
+      </div>
+
+  <div>
+
+ 
+  </div>
+
+
+
 </div>
+ <button id="btn-consumed-beers" class="btn-index"type="submit">¡Listo!</button>
+
 <script src="/javascripts/select.js"></script>
+
+</div>
+
+</div>
+
 
 {{!-- TODO: Cambiar esto para que
 en lugar de ser sólo un espacio de
