@@ -1,10 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const recipeSchema = new Schema({
+const orderSchema = new Schema({
 
+    beerName:String,
+    beerDesc:String, 
+    beerWish:String,
+    maltb: String,
+    maltsE : [{type: Schema.Types.ObjectId, ref : "malt"}],
+    qtyMaltb : Number,
+    qtyMalts: [Number],
+    hops : [{type: Schema.Types.ObjectId, ref : "hop"}],
+    qtyHops: [Number],
+    dryHopped: Boolean,
+    dhHops: [{type: Schema.Types.ObjectId, ref : "hop"}],
+    qtyDHops: [Number]
 });
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
+const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Recipe;
+module.exports = Order;

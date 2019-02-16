@@ -1,160 +1,43 @@
 <h1>Aquí puedes crear tu receta!</h1>
 <h3>Comienza por contarnos un poco de tu idea. ¡Ayúdanos a conocerla!</h3>
-<form>
+<form method="POST" action="/receta/{{userid}}">
   <div class="form-group">
     <label for="beerName">¿Cómo se llama tu cerveza?</label>
-    <input type="text" class="form-control" id="beerName" placeholder="Como mi abuelita">
     <small class="form-text text-muted">Elige un nombre que capture lo que esperas de ella. Celebrar? Divertirte? Explorar?.</small>
+    <input type="text" class="form-control" name="beerName" placeholder="La mejor">
   </div>
+
   <div class="form-group">
     <label for="beerDesc">¿Cuál es su historia?</label>
-    <input type="text" class="form-control" id="beerDesc" placeholder="Se nos ocurrió a mi socio y mi en un roadtrip">
-    <small class="form-text text-muted">Elige un nombre que capture lo que esperas de ella. Celebrar? Divertirte? Explorar?.</small>
+      <small class="form-text text-muted">Elige un nombre que capture lo que esperas de ella. Celebrar? Divertirte? Explorar?.</small>
+    <input type="text" class="form-control" name="beerDesc" placeholder="Se nos ocurrió a mi socio y mi en un roadtrip">
   
     <label for="beerWish">¿Cómo te la imaginas?</label>
-    <input type="text" class="form-control" id="beerDesc" placeholder="Con sabor a madera y café, poca espuma y mucho alcohol">
-    <small class="form-text text-muted">Si. ¿De qué color? ¿Con qué sabores? ¿Parecida a algo que ya hayas probado? </small>
+        <small class="form-text text-muted">Si. ¿De qué color? ¿Con qué sabores? ¿Parecida a algo que ya hayas probado? </small>
+      <input type="text" class="form-control" name="beerWish" placeholder="Con sabor a madera y café, poca espuma y mucho alcohol">
   </div>
+
+<div id = "malt-select" class="form-group">
+<hr>
 <h3>Ahora, a algo más técnico, tus maltas:</h3>
 <small class="form-text text-muted">Selecciona las maltas que quieres y agrega la cantidad en gramos que vamos a poner. Considera que cada lote se prepara en 22 L de agua:</small>
-   <!---<div class="form-group">
-    <label for="exampleFormControlSelect2">Malta de especialidad 1</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>Carapills</option>
-      <option>Caramel 20L</option>
-      <option>Caramel 40L</option>
-      <option>Caramel 80L</option>
-      <option>Dark</option>
-      <option>Pilsner</option>
-    </select>--->
-  
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Carapills</label>
-  <input type="text" placeholder="250">
+ <label for="maltB">Selecciona tu malta base:</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="maltB">
+      {{#each malts}}
+      <option>{{this.name}}</option>
+      {{/each}}
+    </select>
+
+ <label for="maltsE">Selecciona tus maltas de especialidad</label>
+    <select class="multiselect-recetas" id="Multiselect" multiple="multiple" name="maltsE">
+      {{#each malts}}
+      <option value="{{this._id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
 </div>
 
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Caramel 20L</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Caramel 40L</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Caramel 150L</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Carawheat Weyermann</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Honey Gambrinus</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Carared Weyermann</label>
-  <input type="text" placeholder="250">
-</div>
 
 <h3>Y ahora los lupulos:</h3>
-<small class="form-text text-muted">Seleccióna los lúpulos que quieres que agreguemos, la cantidad (en onzas) y el tiempo que debemos dejarlos. ¡También podemos hacer dryhopping!</small>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Amarillo</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Apollo</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Bravo</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Cascade</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Centennial</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Chinhook</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-  Citra</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Cluster</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Colombus</label>
-  <input type="text" placeholder="250">
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    East Kent Golding</label>
-  <input type="text" placeholder="250">
-</div>
-
-  <hr>
-  <button type="submit" class="btn-index">Listo!</button>
-</form>
-
-
 <div class="form-group">
     
   <label for="exampleFormControlSelect1">Selecciona el primer lúpulo</label>
@@ -163,3 +46,26 @@
       <option>{{this.hopName}}</option>
       {{/each}}
     </select>
+
+<label for="exampleFormControlSelect1">Selecciona el segundo lúpulo</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      {{#each hops}}
+      <option>{{this.hopName}}</option>
+      {{/each}}
+    </select>
+
+    <label for="exampleFormControlSelect1">Selecciona el lúpulo para Dry Hopping</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      {{#each hops}}
+      <option>{{this.hopName}}</option>
+      {{/each}}
+    </select>
+
+    </div>
+
+  <hr>
+  <button type="submit" class="btn-index">Listo!</button>
+  <a href="/showrecipe">Previewgi</a>
+</form>
+
+<script src="/javascripts/select.js"></script>

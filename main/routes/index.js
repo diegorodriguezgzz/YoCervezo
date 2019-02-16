@@ -11,14 +11,20 @@ router.get('/', (req, res, next) => {
   return res.render('index');
 });
 
-router.get('/onboarding', (req, res, next) => {
-  return res.render('onboarding')
+
+router.get('/showrecipe', (req, res, next)=>
+{
+  return res.render('showrecipe');
 });
+//router.get('/onboarding', (req, res, next) => {
+  //return res.render('onboarding')
+//});
 
 //router.get('/addrecipe', (req, res, next) => {
 //return res.render('addrecipe')
 //});
 
+<<<<<<< HEAD
 router.get('/addrecipe', (req, res, next) => {
   Hops.find()
     .then(hops => {
@@ -29,6 +35,46 @@ router.get('/addrecipe', (req, res, next) => {
       next();
     });
 });
+=======
+router.get('/addrecipe/:userid', (req,res)=>{
+  const userid = req.params.userid;
+    Hops.find()
+    .then(hops =>{ 
+      Malt.find()
+      .then(malts =>{
+        console.log('hops', hops);
+        return res.render ('addrecipe',{malts, hops, userid : userid});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+router.post('/addrecipe/:userid', (req,res)=> {
+  const {
+    maltb,
+    maltsE,
+    hops
+  } = req.body
+  const userid = req.params.userid;
+  User.findById(userid)
+  .then(user => {
+    //Get list of recipes
+    //List of beers is an array
+    //Append new recipe to end of array
+    //Set list of recipes to be appended list
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+  
+  
+>>>>>>> e5602ffde5464062c3b48a0b449e2784a9296e41
 
 router.get('/beers', (req, res, next) => {
   Beer.find()
@@ -75,14 +121,17 @@ router.get('/onboarding/:userid', (req, res, next) => {
   User.findById(req.params.userid)
     .populate('consumedBeer')
     .then(user => {
+      console.log(user);
       const consumedBeers = user.consumedBeer;
-      return res.render('onboarding', { userid: user._id, consumedBeers });
+      return res.render('onboarding', { userid: user._id, consumedBeers, user:user });
     })
     .catch(err => {
       console.log(err);
       next();
     });
 });
+
+
 
 router.post('/onboarding/:userid', (req, res, next) => {
   const {

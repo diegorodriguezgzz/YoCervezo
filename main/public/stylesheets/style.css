@@ -11,6 +11,13 @@ html {
   padding: 0;
   margin: 0; }
 
+h3 {
+  font-family: 'Montserrat', sans-serif; }
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center; }
+
 body {
   padding: 0;
   margin: 0;
@@ -88,7 +95,7 @@ h1 {
   font-size: 54pt;
   text-align: center;
   margin: 3vh;
-  font-style: italic;
+  font-style: bold;
   font-family: 'Montserrat', sans-serif; }
 
 .dictionary-entry {
@@ -149,13 +156,14 @@ h1 {
   border: 3px solid #EB8A1E;
   padding: 1.5vh 0.5vw; }
 
-.footer-message {
+#footer-message {
   width: 33%;
-  font-size: 16pt;
+  font-size: 14pt;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 4px; }
 
 /* Páginas cervezas */
 .beer-card {
@@ -200,7 +208,8 @@ h1 {
   object-fit: scale-down; }
 
 p {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  text-align: justify; }
 
 .logoDiv {
   background-color: #EB8A1E; }
@@ -208,5 +217,36 @@ p {
 #logoNav {
   width: 40%vh;
   height: 45px; }
+
+.form-group {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'Montserrat', sans-serif; }
+
+.login-group {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+
+.seleccion-cervezas {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.multiselect-cervezo {
+  height: 80%;
+  width: 33%;
+  align-items: center; }
+
+.choice-container {
+  align-items: center; }
+
+.range {
+  color: goldenrod;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

@@ -14,6 +14,7 @@ const session      = require('express-session');
 const bcrypt       = require('bcrypt');
 const flash        = require('connect-flash');
 const User         = require('./models/User');
+const MongoStore = require("connect-mongo")(session);
 
 mongoose
   .connect(process.env.MONGODB, {useNewUrlParser: true})
@@ -37,7 +38,8 @@ app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSIONSECRET,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
 passport.serializeUser((user, callback)=>{
