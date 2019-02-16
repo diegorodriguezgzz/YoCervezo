@@ -1,4 +1,4 @@
-<h1>Aquí puedes crear tu receta!</h1>
+<h1>¡Aquí puedes crear tu receta!</h1>
 <h3>Comienza por contarnos un poco de tu idea. ¡Ayúdanos a conocerla!</h3>
 <form method="POST" action="/receta/{{userid}}">
   <div class="form-group">
@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <label for="beerDesc">¿Cuál es su historia?</label>
-      <small class="form-text text-muted">Elige un nombre que capture lo que esperas de ella. Celebrar? Divertirte? Explorar?.</small>
+      <small class="form-text text-muted">Elige un nombre que capture lo que esperas de ella. ¿Celebrar? ¿Divertirte? Explorar?</small>
     <input type="text" class="form-control" name="beerDesc" placeholder="Se nos ocurrió a mi socio y mi en un roadtrip">
   
     <label for="beerWish">¿Cómo te la imaginas?</label>
@@ -19,7 +19,7 @@
 
 <div id = "malt-select" class="form-group">
 <hr>
-<h3>Ahora, a algo más técnico, tus maltas:</h3>
+<h3>Ahora, a algo más técnico: tus maltas</h3>
 <small class="form-text text-muted">Selecciona las maltas que quieres y agrega la cantidad en gramos que vamos a poner. Considera que cada lote se prepara en 22 L de agua:</small>
  <label for="maltB">Selecciona tu malta base:</label>
     <select class="form-control" id="exampleFormControlSelect1" name="maltB">
@@ -37,7 +37,7 @@
 </div>
 
 
-<h3>Y ahora los lupulos:</h3>
+<h3>Y ahora los lúpulos:</h3>
 <div class="form-group">
     
   <label for="exampleFormControlSelect1">Selecciona el primer lúpulo</label>
@@ -64,8 +64,8 @@
     </div>
 
   <hr>
-  <button type="submit" class="btn-index">Listo!</button>
-  <a href="/showrecipe">Previewgi</a>
+  <button type="submit" class="btn-index">¡Listo!</button>
+  <a href="/showrecipe">Preview</a>
 </form>
 
 <script src="/javascripts/select.js"></script>

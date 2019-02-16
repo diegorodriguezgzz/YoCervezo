@@ -2,43 +2,48 @@
 
 <h2>Le hemos preguntado a nuestro duende borracho, y te podemos sugerir que pruebes estas cervezas:</h2>
 
-{{#each suggestedBeers}}
-<div class="beer-card">
-  {{#unless this.image_src}}
-  <img class="beer-img" src='/images/default.png'>
-  {{/unless}}
-  {{#if this.image_src}}
-  <img class="beer-img" src={{this.image_src}}>
-  {{/if}}
-  <a class="beer-link" href="/beers/{{this._id}}">
-    <div class="beer-content">
-      <h3 class="beer-brand">{{this.brand}}</h3>
-      <h4 class="beer-name">{{this.name}}</h4>
-      <p class="beer-style">{{this.style}}</p>
-      <p class="beer-price">${{this.price}} MXN</p>
-    </div>
-  </a>
-  <button><a href="/add-cart/{{this._id}}">Add to cart!</a></button>
-</div>
-{{/each}}
+<div class="beer-container">
 
-<h3>Además, prueba nuestra propia creación YoCervezo, que elaboramos con mucho orgullo:</h3>
+  {{#each suggestedBeers}}
+  <div class="beer-card">
+    {{#unless this.image_src}}
+    <img class="beer-img" src='/images/default.png'>
+    {{/unless}}
+    {{#if this.image_src}}
+    <img class="beer-img" src={{this.image_src}}>
+    {{/if}}
+    <a class="beer-link" href="/beers/{{this._id}}">
+      <div class="beer-content">
+        <h3 class="beer-brand">{{this.brand}}</h3>
+        <h4 class="beer-name">{{this.name}}</h4>
+        <p class="beer-style">{{this.style}}</p>
+        <p class="beer-price">${{this.price}} MXN</p>
+      </div>
+    </a>
+    <button><a href="/add-cart/{{this._id}}">Agregar al carrito</a></button>
+  </div>
+  {{/each}}
+</div>
+
+<h3>Además, prueba nuestra propia creación <strong>YoCervezo</strong>, que elaboramos con mucho orgullo:</h3>
 <br>
 
-<div class="beer-card">
-  {{#unless houseBeer.image_src}}
-  <img class="beer-img" src='/images/default.png'>
-  {{/unless}}
-  {{#if houseBeer.image_src}}
-  <img class="beer-img" src={{houseBeer.image_src}}>
-  {{/if}}
-  <a class="beer-link" href="/beers/{{houseBeer._id}}">
-    <div class="beer-content">
-      <h3 class="beer-brand">{{houseBeer.brand}}</h3>
-      <h4 class="beer-name">{{houseBeer.name}}</h4>
-      <p class="beer-style">{{houseBeer.style}}</p>
-      <p class="beer-price">${{houseBeer.price}} MXN</p>
-    </div>
-  </a>
-  <button><a href="/add-cart/{{houseBeer._id}}">Add to cart!</a></button>
+<div class="beer-container">
+  <div class="beer-card">
+    {{#unless houseBeer.image_src}}
+    <img class="beer-img" src='/images/default.png'>
+    {{/unless}}
+    {{#if houseBeer.image_src}}
+    <img class="beer-img" src="/{{houseBeer.image_src}}">
+    {{/if}}
+    <a class="beer-link" href="/beers/{{houseBeer._id}}">
+      <div class="beer-content">
+        <h3 class="beer-brand">{{houseBeer.brand}}</h3>
+        <h4 class="beer-name">{{houseBeer.name}}</h4>
+        <p class="beer-style">{{houseBeer.style}}</p>
+        <p class="beer-price">${{houseBeer.price}} MXN</p>
+      </div>
+    </a>
+    <button><a href="/add-cart/{{houseBeer._id}}">Agregar al carrito</a></button>
+  </div>
 </div>

@@ -4,7 +4,7 @@ const Beer = require('../models/Beer');
 const ConsumedBeers = require('../models/ConsumedBeers');
 const User = require('../models/User');
 const Hops = require('../models/Hops');
-const intel = require('../inteligencia/seleccion')//TODO: Test, remove
+const intel = require('../inteligencia/seleccion')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -15,13 +15,6 @@ router.get('/', (req, res, next) => {
 router.get('/showrecipe', (req, res, next) => {
   return res.render('showrecipe');
 });
-//router.get('/onboarding', (req, res, next) => {
-//return res.render('onboarding')
-//});
-
-//router.get('/addrecipe', (req, res, next) => {
-//return res.render('addrecipe')
-//});
 
 router.get('/addrecipe/:userid', (req, res) => {
   const userid = req.params.userid;
@@ -29,7 +22,6 @@ router.get('/addrecipe/:userid', (req, res) => {
     .then(hops => {
       Malt.find()
         .then(malts => {
-          console.log('hops', hops);
           return res.render('addrecipe', { malts, hops, userid: userid });
         })
         .catch(err => {
@@ -105,7 +97,6 @@ router.get('/onboarding/:userid', (req, res, next) => {
   User.findById(req.params.userid)
     .populate('consumedBeer')
     .then(user => {
-      console.log(user);
       const consumedBeers = user.consumedBeer;
       return res.render('onboarding', { userid: user._id, consumedBeers, user: user });
     })
@@ -143,7 +134,7 @@ router.post('/onboarding/:userid', (req, res, next) => {
             })
           });
           lossHouse.sort((a, b) => a.loss - b.loss);
-          houseBeer = lossHouse[0]._id;
+          houseBeer = lossHouse[0].id;
 
           //Function to suggest beers
           ConsumedBeers.find()
@@ -216,7 +207,6 @@ router.get('/your-beers/:userid', (req, res, next) => {
     .populate('suggestedBeers')
     .populate('houseBeer')
     .then(user => {
-      console.log(user);
       res.render('your-beers', user);
     })
     .catch(err => {
@@ -225,16 +215,5 @@ router.get('/your-beers/:userid', (req, res, next) => {
     });
 
 });
-
-//router.post('/newUser', (req,res)=>{
-//  const{username, password, country, province, street, number, email, zipCode, bestBeer, worstBeer, celebBeer, beerStyle, beerHead, beerGas, beerAlc, beerBitt}
-//  const newUser = new User ({username, password, country, province, street, number, email, zipCode, bestBeer, worstBeer, celebBeer, beerStyle, beerHead, beerGas, beerAlc, beerBitt})
-//  newUser.save()
-//  .then ((user))=>{
-//   res.redirect('/beers')
-//  })
-//  .catch(err=> console.log(err))
-//})
-
 
 module.exports = router;
