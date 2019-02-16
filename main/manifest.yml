@@ -6,4 +6,4 @@
     domain: mybluemix.net
     host: yocervezo-mx
     path: . 
-    command: npm start
+    command: node ./bin/www
