@@ -1,23 +1,22 @@
-<h1>¡Ayúdanos a conocerte!</h1>
-<small class="form-text text-muted">Con ésta información, podremos conocer mejor tus gustos: </small>
-
+<h1>{{user.username}}¡Ayúdanos a conocerte!</h1>
+<small class="form-text text-muted" id="onboarding header">Con ésta información, podremos conocer mejor tus gustos: </small>
+<hr>
+<div class = "form-group">
 <form method="POST" action="/onboarding/{{userid}}" id="onBoard">
-  <label for="beerLikeArray">¿Las tres cervezas que más te gustan?</label>
+  <label for="beerLikeArray">¿Cuales son las tres cervezas que más te gustan?</label>
   <select class="multiselect-cervezo-limit3" name="beerLikeArray" multiple="multiple">
     {{#each consumedBeers}}
     <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
   </select>
-  <br>
-
-  <label for="beerDislikeArray">¿Las tres cervezas que menos te gustan?</label>
-  <select class="multiselect-cervezo-limit3" name="beerDislikeArray" multiple="multiple">
+<hr>
+ <label for="beerDislikeArray">¿Cuales son las tres cervezas que menos te gustan?</label>
+ <select class="multiselect-cervezo-limit3" name="beerDislikeArray" multiple="multiple">
     {{#each consumedBeers}}
     <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
-  </select>
-  <br>
-
+ </select>
+<hr>
   <label for="celebBeer">¿Con qué cerveza te gusta celebrar?</label>
   <input list="beerList" name="celebBeer" placeholder="No lo Se">
   <datalist id="beerList">
@@ -28,32 +27,37 @@
     <option value="{{this.name}}">
       {{/each}}
   </datalist>
-
+<hr>
   <label for="beerStyle">¿Qué estilo de cerveza es tu favorito?</label>
   <input type="text" name="beerStyle" placeholder="¿Pale Ale, Lager, Stout?">
-
-  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
+<hr>  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
   <label for="beerHead">Del 1 al 10, ¿Cuán espumosa te gusta tu cerveza?</label>
-  <input type="range" min="1" max="10" value="1" name="beerHead" class="slider">
-
-  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
+  <input type="range" min="1" max="10" value="1" name="beerHead" class="slider" id="myRange1">
+  <p>Espuma: <span class = "range" id="demo1"></span></p>
+<hr>  {{!-- TODO: Mostrar visualmente (JS) el valor seleccionado --}}
   <label for="beerGas">Del 1 al 10, ¿Qué tan gaseosa te gusta tu cerveza?</label>
-  <input type="range" min="1" max="10" value="1" name="beerGas" class="slider">
-
-  <label for="beerAlc">¿Cómo te gusta el alcohol den la cerveza?</label>
+  <p>Gas: <span id="demo2" class = "range"></span></p>
+  <input type="range" min="1" max="10" value="1" name="beerGas" class="slider" id = "myRange2">
+  <hr>
+  <label for="beerAlc">¿Cómo te gusta el alcohol en la cerveza?</label>
 
   <select name="beerAlc" form="onBoard">
     <option value="Muy presente">Muy presente</option>
     <option value="Balanceado">Balanceado</option>
     <option value="Ligero">Ligero</option>
     <option value="Imperceptible">Imperceptible</option>
-  </select></p>
+  </select>
 
-  <p><label for="beerBitt">¿Qué tan amarga te gusta?</label>
-    <input type="range" min="1" max="10" value="1" name="beerBitt" class="slider"></p>
 
-  <input type="submit" value="Enviar">
+    <hr>
+    <label for="beerBitt">¿Qué tan amarga te gusta?</label>
+    <p>Amargor: <span id="demo3" class = "range"></span></p>
+    <input type="range" min="1" max="10" value="1" name="beerBitt" class="slider" id="myRange3">
+    <hr>
+  <input type="submit" value="Enviar" class="btn-index">
 
 </form>
+</div>
 
 <script src="/javascripts/select.js"></script>
+<script src="/javascripts/sliders.js"></script>
