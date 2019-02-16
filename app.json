@@ -1,0 +1,17 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "description": "Heroku",
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "YoCervezo",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
