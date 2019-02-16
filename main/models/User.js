@@ -20,7 +20,7 @@ const userSchema = new Schema({
     beerLikeArray: [{type : Schema.Types.ObjectId, ref : "consumed-beers"}], //Rel. con el beer database Array con las 3 cervezas que más te han gustado
     beerDislikeArray: [{type : Schema.Types.ObjectId, ref : "consumed-beers"}], //Rel. con el beer database Array con las 3 cervezas que menos te gustan
     beerInterest: {type : String, enum : ["Bebedor de sofá", "Entusiasta", "Entrepreneur"]}, //Bebedor de sofá, Entusiasta, Entrepreneur 
-    belt: Number //Nivel del cervezador dentro del 
+    suggestedBeers: [{type : Schema.Types.ObjectId, ref : "consumed-beers"}]
 }, {
     timestamps : true
 });

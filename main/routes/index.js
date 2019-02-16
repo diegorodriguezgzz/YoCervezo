@@ -21,9 +21,21 @@ router.get('/showrecipe', (req, res, next)=>
 //});
 
 //router.get('/addrecipe', (req, res, next) => {
-  //return res.render('addrecipe')
+//return res.render('addrecipe')
 //});
 
+<<<<<<< HEAD
+router.get('/addrecipe', (req, res, next) => {
+  Hops.find()
+    .then(hops => {
+      return res.render('addrecipe', { hops });
+    })
+    .catch(err => {
+      console.log(err);
+      next();
+    });
+});
+=======
 router.get('/addrecipe/:userid', (req,res)=>{
   const userid = req.params.userid;
     Hops.find()
@@ -62,6 +74,7 @@ router.post('/addrecipe/:userid', (req,res)=> {
 })
   
   
+>>>>>>> e5602ffde5464062c3b48a0b449e2784a9296e41
 
 router.get('/beers', (req, res, next) => {
   Beer.find()
@@ -115,7 +128,7 @@ router.get('/onboarding/:userid', (req, res, next) => {
     .catch(err => {
       console.log(err);
       next();
-    })
+    });
 });
 
 
@@ -132,27 +145,56 @@ router.post('/onboarding/:userid', (req, res, next) => {
     beerDislikeArray
   } = req.body
 
-  User.findOneAndUpdate({ _id: req.params.userid },
-    {
-      $set: {
-        celebBeer,
-        beerStyle,
-        beerHead,
-        beerGas,
-        beerAlc,
-        beerBitt,
-        beerLikeArray,
-        beerDislikeArray
-      }
-    })
-    .then(user => {
-      console.log(`Onboarding complete for ${user.username}!`);
-      return res.redirect('/');
+  intel.suggestBeerParams(req.params.userid)
+  .then(suggestion => {
+    const {suggestedIBU, suggestedABV} = suggestion;
+    
+    //Function to suggest beers
+    ConsumedBeers.find()
+    .then(beers => {
+      lossPairs = beers.map(el => {
+        return ({
+          id : el._id,
+          //IBU is easier to taste, so it is counted double, within scale
+          loss : (Math.abs(suggestedIBU-el.ibu)/120)*2 + (Math.abs(suggestedABV - el.abv)/0.1),
+          name : el.name
+        });
+      });
+      lossPairs.sort((a, b) => a.loss - b.loss);
+      let suggestedBeers = lossPairs.slice(0,3).map(el => el.id);
+
+      User.findOneAndUpdate({ _id: req.params.userid },
+        {
+          $set: {
+            celebBeer,
+            beerStyle,
+            beerHead,
+            beerGas,
+            beerAlc,
+            beerBitt,
+            beerLikeArray,
+            beerDislikeArray,
+            suggestedBeers
+          }
+        })
+        .then(user => {
+          console.log(`Onboarding complete for ${user.username}!`);
+          return res.redirect(`/your-beers/${req.params.userid}`);
+        })
+        .catch(err => {
+          console.log(err);
+          next();
+        });
     })
     .catch(err => {
       console.log(err);
       next();
+    });
     })
+  .catch(err => {
+    console.log(err);
+    next();
+  });
 });
 
 
@@ -167,16 +209,8 @@ router.get('/beers/:id', (req, res, next) => {
     });
 });
 
-//Test TODO: Remove
-router.get('/testSuggest', (req, res, next) => {
-  let user = User.findById('5c650db725329c1c2095be00')
-    .then(user => {
-      console.log(`ABV Suggestions for ${user.username}:
-  ${intel.suggestBeerABV(user._id)}`);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+router.get('/your-beers/:userid', (req, res, next) => {
+  res.redirect('/');
 })
 
 //router.post('/newUser', (req,res)=>{
